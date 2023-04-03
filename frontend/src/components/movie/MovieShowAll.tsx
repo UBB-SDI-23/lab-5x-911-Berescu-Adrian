@@ -34,7 +34,7 @@ export const MovieShowAll = () => {
                     <td>{movie.year}</td>
                     <td>{movie.genre}</td>
                     <td>{movie.synopsis}</td>
-                    <td>{movie.director}</td>
+                    <td>{movie.director.id}</td>
                 </tr>
             ))}
         </tbody>
