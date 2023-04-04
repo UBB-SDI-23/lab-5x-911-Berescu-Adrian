@@ -3,6 +3,7 @@ import { Director } from '../../models/Director'
 
 export const DirectorShowAll = () => {
   const [directors, setDirectors] = useState([])
+  const [sortField, setSortField] = useState('id')
 
   useEffect( () => {
   fetch("http://127.0.0.1:8000/api/director/")
@@ -10,6 +11,16 @@ export const DirectorShowAll = () => {
     .then(data => setDirectors(data));
   }, []);
 
+  const handleSort = () => {
+    if(sortField == 'id'){
+      setSortField('nominations');
+      setDirectors([...directors].sort((a: Director, b: Director) => b.nominations - a.nominations))
+    }
+    else{
+      setSortField('id');
+      setDirectors([...directors].sort((a: Director, b: Director) => a.id - b.id))
+    }
+  };
 
   if (directors.length === 0) {
     return <div>No directors</div>;
@@ -40,6 +51,7 @@ export const DirectorShowAll = () => {
             ))}
         </tbody>
       </table>
+      <button onClick={handleSort}>sort by {sortField === 'id' ? 'nominations' : 'id'}</button>
     </div>
   )
 }
