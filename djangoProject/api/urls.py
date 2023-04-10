@@ -1,6 +1,9 @@
 from django.urls import path
-from .views import MovieList, MovieDetail, DirectorList, DirectorDetail, ActorList, ActorDetail, RenownedDirectors, \
-    MovieActorList, MovieActorDetail, MoviesByAvgActorNominations, DirectorsByAvgMovieYears, ActorMovieBulkCreateView
+
+from api.views.ActorViews import ActorList, ActorDetail
+from api.views.DirectorViews import DirectorList, DirectorDetail, RenownedDirectors, DirectorsByAvgMovieYears
+from api.views.MovieActorViews import MovieActorList, MovieActorDetail, ActorMovieBulkCreateView
+from api.views.MovieViews import MovieList, MovieDetail, MoviesByAvgActorNominations
 
 urlpatterns = [
     path('movie/', MovieList.as_view()),
