@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { Director } from "../../models/Director";
+import backArrow from "../../assets/back_arrow.svg"
 
 export const DirectorDetails = () => {
     const { directorID } = useParams();
@@ -22,22 +23,26 @@ export const DirectorDetails = () => {
 
       return (
         <React.Fragment>
-          <h1>Director Details</h1>
+          <h1 className="text-4xl font-bold mt-[-12rem] mb-[8rem]">Director Details</h1>
+          <Link to={`/directors`}>
+            <img src={backArrow} alt="" className="h-10 w-10"/>
+          </Link>
           {director ? (
-            <React.Fragment>
+            <div className="p-4 [&>*]:text-lg ">
               <p>Name: {director?.name}</p>
               <p>Born: {director?.dob.toString()}</p>
               <p>Country: {director?.country}</p>
               <p>Films directed: {director?.films_directed}</p>
               <p>Nominations: {director?.nominations}</p>
-              <ul>
+              <ul className="">
+              <p>Movies: </p>
               {director?.movie?.length ? (
                 director?.movie?.map((mov) => <li key={mov.id}>{mov.title}</li>)
               ) : (
                 <p>No movies found</p>
               )}
-            </ul>
-            </React.Fragment>
+              </ul>
+            </div>
           ) : (
             <p>Director not found</p>
           )}

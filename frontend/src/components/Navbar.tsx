@@ -6,18 +6,18 @@ export const Navbar = () => {
     const path = location.pathname;
 
     return (
-        <React.Fragment>
+        <nav className="absolute top-0 left-0 ml-4 flex flex-row [&>*>*]:px-16 [&>*>*]:py-6 [&>*>*]:font-bold">
             <Link to="/">
-                <button>
-                    home
+                <button> 
+                    Home
                 </button>
             </Link>
 
             <Link to="/directors">
                 <button>
-                    directors
+                    Directors
                 </button>
             </Link>
-        </React.Fragment>
+        </nav>
     )
 }

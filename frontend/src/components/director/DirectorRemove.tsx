@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react"
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import backArrow from "../../assets/back_arrow.svg"
 
 export const DirectorRemove = () => {
     const { directorID } = useParams();
@@ -19,8 +20,11 @@ export const DirectorRemove = () => {
 
     return (
         <React.Fragment>
-            <button onClick={handleDelete}>Delete</button>
-            <button onClick={handleCancel}>Cancel</button>
+            <Link to={`/directors`}>
+                <img src={backArrow} alt="" className="h-10 w-10"/>
+            </Link>
+            <button onClick={handleDelete} className="bg-red-500 w-20 h-10 rounded-full m-2 hover:bg-red-400">Delete</button>
+            <button onClick={handleCancel} className="w-20 h-10 border-2 border-font rounded-full m-2 hover:bg-blue-100">Cancel</button>
 
         </React.Fragment>
     )

@@ -25,7 +25,7 @@ function App() {
           <Route path="/director/add" element={<DirectorAdd/>} />
           <Route path="/director/:directorID/remove" element={<DirectorRemove/>} />
           <Route path="/director/:directorID/edit" element={<DirectorEdit/>}/>
-          <Route path="/director/avg" element={<DirectorAvg/>} />
+          <Route path="/directors/avg" element={<DirectorAvg/>} />
         </Routes>
       </Router>
     </React.Fragment>
