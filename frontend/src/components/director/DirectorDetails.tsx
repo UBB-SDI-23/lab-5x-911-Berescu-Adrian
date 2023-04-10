@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { Director } from "../../models/Director";
 import backArrow from "../../assets/back_arrow.svg"
+import {BACKEND_API_URL} from "../../constants"
 
 export const DirectorDetails = () => {
     const { directorID } = useParams();
@@ -9,7 +10,7 @@ export const DirectorDetails = () => {
 
     useEffect( () => {
         const fetchDirector = async () => {
-            const response = await fetch(`http://127.0.0.1:8000/api/director/${directorID}/`);
+            const response = await fetch(`${BACKEND_API_URL}/director/${directorID}/`);
             const director = await response.json();
             setDirector(director);
             console.log(director);

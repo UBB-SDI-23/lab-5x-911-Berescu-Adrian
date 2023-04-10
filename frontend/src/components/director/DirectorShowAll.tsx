@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom'
 import detailIcon from '../../assets/detail.svg'
 import deleteIcon from '../../assets/delete.svg'
 import editIcon from '../../assets/edit.svg'
+import { BACKEND_API_URL } from '../../constants'
 
 export const DirectorShowAll = () => {
   const [directors, setDirectors] = useState([])
   const [sortField, setSortField] = useState('id')
 
   useEffect( () => {
-  fetch("http://127.0.0.1:8000/api/director/")
+  fetch(`${BACKEND_API_URL}/director/`)
     .then(res => res.json())
     .then(data => setDirectors(data));
   }, []);
@@ -34,8 +35,8 @@ export const DirectorShowAll = () => {
     <div>
       <h1 className='text-4xl font-bold mb-[4rem]'>Directors List</h1>
       <div className='flex flex-row items-center [&>*]:px-2 mb-8'>
-        <Link to={`/director/add`}>
-          <h1 className='text-4xl text-blue-800'>+</h1>
+        <Link to={`/director/add`} >
+          <h1 className='text-4xl text-blue-800 hover:text-blue-500'>+</h1>
         </Link>
         <Link to={`avg`}>
           <h1 className='text-lg hover:text-blue-600 ml-6 pt-2'>Average</h1>

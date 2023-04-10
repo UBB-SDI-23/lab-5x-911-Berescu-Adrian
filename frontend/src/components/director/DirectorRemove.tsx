@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom";
 import backArrow from "../../assets/back_arrow.svg"
 import { Director } from "../../models/Director";
+import { BACKEND_API_URL } from "../../constants";
 
 export const DirectorRemove = () => {
     const { directorID } = useParams();
@@ -11,7 +12,7 @@ export const DirectorRemove = () => {
 
     useEffect( () => {
         const fetchDirector = async () => {
-            const response = await fetch(`http://127.0.0.1:8000/api/director/${directorID}`);
+            const response = await fetch(`${BACKEND_API_URL}/director/${directorID}`);
             const director = await response.json();
             setDirector(director);
             console.log(director);
@@ -21,7 +22,7 @@ export const DirectorRemove = () => {
 
     const handleDelete = async (event: { preventDefault: () => void }) => {
 		event.preventDefault();
-		await axios.delete(`http://127.0.0.1:8000/api/director/${directorID}`);
+		await axios.delete(`${BACKEND_API_URL}/director/${directorID}`);
 		navigate("/directors");
 	};
 

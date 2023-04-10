@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 import detailIcon from '../../assets/detail.svg'
 import deleteIcon from '../../assets/delete.svg'
 import editIcon from '../../assets/edit.svg'
+import {BACKEND_API_URL} from "../../constants"
 
 export const DirectorAvg = () => {
   const [directors, setDirectors] = useState([])
 
   useEffect( () => {
-  fetch("http://127.0.0.1:8000/api/director/avg/")
+  fetch(`${BACKEND_API_URL}/director/avg/`)
     .then(res => res.json())
     .then(data => setDirectors(data));
   }, []);

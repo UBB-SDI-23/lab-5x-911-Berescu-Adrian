@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import { Director } from "../../models/Director";
 import backArrow from "../../assets/back_arrow.svg"
 import axios from "axios";
+import {BACKEND_API_URL} from "../../constants"
 
 export const DirectorEdit = () => {
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ export const DirectorEdit = () => {
     useEffect(() => {
         const fetchDirector = async () => {
           const response = await axios.get(
-            `http://127.0.0.1:8000/api/director/${directorID}/`
+            `${BACKEND_API_URL}/director/${directorID}/`
           );
           const fetchedDirector: Director = response.data;
           setDirector({
@@ -43,7 +44,7 @@ export const DirectorEdit = () => {
                 ...director,
                 dob: director.dob.toISOString().substring(0, 10) // format the date as "YYYY-MM-DD"
             };
-            await axios.put(`http://127.0.0.1:8000/api/director/${directorID}/`, formattedDirector);
+            await axios.put(`${BACKEND_API_URL}/director/${directorID}/`, formattedDirector);
             navigate("/directors");
         }
         catch(error){

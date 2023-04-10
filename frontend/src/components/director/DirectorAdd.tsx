@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { Director } from "../../models/Director";
 import backArrow from "../../assets/back_arrow.svg"
 import axios from "axios";
+import {BACKEND_API_URL} from "../../constants"
 
 export const DirectorAdd = () => {
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ export const DirectorAdd = () => {
                 ...director,
                 dob: director.dob.toISOString().substring(0, 10) // format the date as "YYYY-MM-DD"
             };
-            await axios.post(`http://127.0.0.1:8000/api/director/`, formattedDirector);
+            await axios.post(`${BACKEND_API_URL}/director/`, formattedDirector);
             navigate("/directors");
         }
         catch(error){
